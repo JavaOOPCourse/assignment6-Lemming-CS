@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Course {
     private String name;
 
@@ -12,12 +14,15 @@ public class Course {
     // TODO: Task 4 — Обязательно переопредели (иначе HashMap не будет работать!)
     @Override
     public boolean equals(Object o) {
-        return false; // заглушка
+        if (this == o) return true;
+        if (o == null || this.getClass() != o.getClass()) return false;
+        Course c = (Course) o;
+        return Objects.equals(this.name, c.getName());
     }
 
     @Override
     public int hashCode() {
-        return 0; // заглушка
+        return Objects.hash(this.name);
     }
 
     @Override
